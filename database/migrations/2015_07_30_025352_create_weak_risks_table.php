@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRisksTable extends Migration {
+class CreateWeakRisksTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -22,8 +22,8 @@ class CreateRisksTable extends Migration {
 			$table->char('Calification_RI');
 			$table->text('ControlMeasure_RI');
 			$table->string('ControlHierarchy_RI', 20);
-			$table->bigInteger('id_Person');
-			$table->bigInteger('id_Inspection');
+			$table->bigInteger('idPerson')->unsigned();
+			$table->bigInteger('idInspection')->unsigned();
 			$table->rememberToken();
 			$table->timestamps();
 		});
@@ -36,7 +36,7 @@ class CreateRisksTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('risks');
+		Schema::drop('weak_risks');
 	}
 
 }
