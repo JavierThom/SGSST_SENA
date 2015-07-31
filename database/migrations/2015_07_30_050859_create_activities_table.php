@@ -20,7 +20,7 @@ class CreateActivitiesTable extends Migration {
 			$table->text('Description_Ac');
 			$table->date('Date_Ac');
 			$table->binary('File_Ac');
-			$table->bigInteger('id_Reunion');
+			$table->bigInteger('idReunion');
 			$table->timestamps();
 		});
 	}

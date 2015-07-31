@@ -18,7 +18,6 @@ class CreateHeadquartersTable extends Migration {
 			$table->string('Name_HQ', 50);
 			$table->string('Address_HQ', 80);
 			$table->string('Phone_HQ', 20);
-			$table->bigInteger('id_Center');
 			$table->timestamps();
 		});
 	}

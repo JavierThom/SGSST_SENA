@@ -16,11 +16,10 @@ class CreateTracingsTable extends Migration {
 		{
 			$table->bigincrements('id');
 			$table->string('Type_Tra',50);
+			$table->dateTime('Date_Tra');
 			$table->text('Description_Tra');
 			$table->char('Gravity_Tra');
-			$table->dateTime('Date_Tra');
 			$table->dateTime('DateControl_Tra');
-			$table->bigInteger('id_Person');
 			$table->timestamps();
 		});
 	}

@@ -20,8 +20,6 @@ class CreateIncidentsTable extends Migration {
 			$table->text('Causes_Inc');
 			$table->text('Description_Inc');
 			$table->char('Gravity_Inc');
-			$table->bigInteger('QuantityPersons_Inc');
-			$table->bigInteger('id_Person');
 			$table->timestamps();
 		});
 	}

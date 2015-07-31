@@ -18,6 +18,7 @@ class CreateExamsTable extends Migration {
 			$table->string('Type_Exa', 30);
 			$table->date('DateReg_Exa');
 			$table->text('Novelty_Exa');
+			$table->bigInteger('idPerson');
 			$table->rememberToken();
 			$table->timestamps();
 		});

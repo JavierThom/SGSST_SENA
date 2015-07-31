@@ -19,6 +19,7 @@ class CreateCentersTable extends Migration {
 			$table->string('Name_Cen', 100);
 			$table->string('Address_Cen', 80);
 			$table->string('Phone_Cen', 20);
+			$table->bigInteger('id_Regional');
 			$table->timestamps();
 		});
 	}

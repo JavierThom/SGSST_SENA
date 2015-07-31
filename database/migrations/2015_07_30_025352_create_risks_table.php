@@ -12,13 +12,13 @@ class CreateRisksTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('risks', function(Blueprint $table)
+		Schema::create('weak_risks', function(Blueprint $table)
 		{
 			$table->bigincrements('id');
 			$table->string('Description_RI');
 			$table->string('SpecifyLocation_RI', 100);
 			$table->binary('PhotographicRecord_RI');
-			$table->string('Name_RI' , 60);
+			$table->string('NamePhotographicRecord_RI' , 60);
 			$table->char('Calification_RI');
 			$table->text('ControlMeasure_RI');
 			$table->string('ControlHierarchy_RI', 20);

@@ -15,11 +15,11 @@ class CreateTimetablesTable extends Migration {
 		Schema::create('timetables', function(Blueprint $table)
 		{
 			$table->bigincrements('id');
-			$table->dateTime('Date_TT');
-			$table->dateTime('Date_E');
+			$table->dateTime('Date_Timetable');
+			$table->dateTime('Date_Event');
 			$table->text('Description_TT');
-			$table->bigInteger('id_HQ');
-			$table->bigInteger('id_Person');
+			$table->bigInteger('idHQ');
+			$table->bigInteger('idPerson');
 			$table->timestamps();
 		});
 	}

@@ -16,6 +16,7 @@ class CreatePersonalProtectionItemsTable extends Migration {
 		{
 			$table->bigincrements('id');
 			$table->string('Name_PPI', 50);
+			$table->text('Description_PPI');
 			$table->timestamps();
 		});
 	}
