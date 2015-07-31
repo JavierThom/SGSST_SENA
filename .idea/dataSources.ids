@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - sgsst@localhost" uuid="00ea3927-5e9c-432e-8e30-0f04af72c2e6">
+    <database-info product="MySQL" version="5.6.24" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <schema name="" catalog="sgsst"/>
+    <table name="activities" schema="" catalog="sgsst" type="TABLE">
+      <column name="id" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="Name_Ac" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="Type_Ac" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="Description_Ac" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
+      <column name="Date_Ac" sqlType="DATE" precision="10" scale="0" nullable="false" jdbcType="91"/>
+      <column name="File_Ac" sqlType="BLOB" precision="65535" scale="0" nullable="false" jdbcType="-4"/>
+      <column name="id_Reunion" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <column name="updated_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="area_headquarters" schema="" catalog="sgsst" type="TABLE">
+      <column name="id" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="Name_Area" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="Description_Area" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
+      <column name="id_HQ" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <column name="updated_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="centers" schema="" catalog="sgsst" type="TABLE">
+      <column name="id" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="Code_Cen" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="Name_Cen" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
+      <column name="Address_Cen" sqlType="VARCHAR" precision="80" scale="0" nullable="false" jdbcType="12"/>
+      <column name="Phone_Cen" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <column name="updated_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="element_stocks" schema="" catalog="sgsst" type="TABLE">
+      <column name="id" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="Quantity_ES" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="id_Elements" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="id_AreaHQ" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <column name="updated_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="elements_emergencies" schema="" catalog="sgsst" type="TABLE">
+      <column name="id" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="Type_EE" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="Name_EE" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="Stock_EE" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="StockMin_EE" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <column name="updated_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="emergency_plans" schema="" catalog="sgsst" type="TABLE">
+      <column name="id" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <column name="updated_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="exams" schema="" catalog="sgsst" type="TABLE">
+      <column name="id" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="Type_Exa" sqlType="VARCHAR" precision="30" scale="0" nullable="false" jdbcType="12"/>
+      <column name="DateReg_Exa" sqlType="DATE" precision="10" scale="0" nullable="false" jdbcType="91"/>
+      <column name="Novelty_Exa" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
+      <column name="remember_token" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <column name="updated_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="headquarters" schema="" catalog="sgsst" type="TABLE">
+      <column name="id" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="Name_HQ" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="Address_HQ" sqlType="VARCHAR" precision="80" scale="0" nullable="false" jdbcType="12"/>
+      <column name="Phone_HQ" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="id_Center" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <column name="updated_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="incidents" schema="" catalog="sgsst" type="TABLE">
+      <column name="id" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="Type_Inc" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="Date_Inc" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <column name="Causes_Inc" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
+      <column name="Description_Inc" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
+      <column name="Gravity_Inc" sqlType="CHAR" precision="255" scale="0" nullable="false" jdbcType="1"/>
+      <column name="QuantityPersons_Inc" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="id_Person" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <column name="updated_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="inspections" schema="" catalog="sgsst" type="TABLE">
+      <column name="id" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="Type_Ins" sqlType="VARCHAR" precision="10" scale="0" nullable="false" jdbcType="12"/>
+      <column name="Date_Ins" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <column name="FirstIndicator_Ins" sqlType="DOUBLE" precision="8" scale="2" nullable="false" jdbcType="8"/>
+      <column name="SecondIndicator_Ins" sqlType="DOUBLE" precision="8" scale="2" nullable="false" jdbcType="8"/>
+      <column name="Deadline_Ins" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <column name="File_Ins" sqlType="BLOB" precision="65535" scale="0" nullable="false" jdbcType="-4"/>
+      <column name="FileName_Ins" sqlType="VARCHAR" precision="30" scale="0" nullable="false" jdbcType="12"/>
+      <column name="EventSchedule_Ins" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="remember_token" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <column name="updated_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="migrations" schema="" catalog="sgsst" type="TABLE">
+      <column name="migration" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="batch" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+    </table>
+    <table name="password_resets" schema="" catalog="sgsst" type="TABLE">
+      <column name="email" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="token" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <index name="password_resets_email_index" unique="false" columns="email"/>
+      <index name="password_resets_token_index" unique="false" columns="token"/>
+    </table>
+    <table name="people" schema="" catalog="sgsst" type="TABLE">
+      <column name="id" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="Document_Per" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="DocumentType_Per" sqlType="ENUM" precision="5" scale="0" nullable="false" jdbcType="1"/>
+      <column name="FirstName_Per" sqlType="VARCHAR" precision="30" scale="0" nullable="false" jdbcType="12"/>
+      <column name="LastName_Per" sqlType="VARCHAR" precision="40" scale="0" nullable="false" jdbcType="12"/>
+      <column name="Gender_Per" sqlType="ENUM" precision="2" scale="0" nullable="false" jdbcType="1"/>
+      <column name="EPS_Per" sqlType="VARCHAR" precision="30" scale="0" nullable="false" jdbcType="12"/>
+      <column name="ARP_Per" sqlType="VARCHAR" precision="30" scale="0" nullable="false" jdbcType="12"/>
+      <column name="Phone_Per" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="CellPhone_Per" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="BirthDate_Per" sqlType="DATE" precision="10" scale="0" nullable="false" jdbcType="91"/>
+      <column name="Age_Per" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="RH_Per" sqlType="ENUM" precision="3" scale="0" nullable="false" jdbcType="1"/>
+      <column name="E-mail_Per" sqlType="VARCHAR" precision="80" scale="0" nullable="false" jdbcType="12"/>
+      <column name="Address_Per" sqlType="VARCHAR" precision="80" scale="0" nullable="false" jdbcType="12"/>
+      <column name="CivilStatus_Per" sqlType="ENUM" precision="11" scale="0" nullable="false" jdbcType="1"/>
+      <column name="AcademicLevel_Per" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="State_Per" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6"/>
+      <column name="remember_token" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <column name="updated_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <index name="people_document_per_unique" unique="true" columns="Document_Per"/>
+    </table>
+    <table name="personal_protection_items" schema="" catalog="sgsst" type="TABLE">
+      <column name="id" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="Name_PPI" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <column name="updated_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="positions" schema="" catalog="sgsst" type="TABLE">
+      <column name="id" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="Name_Pos" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="Description_Pos" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <column name="updated_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="reunions" schema="" catalog="sgsst" type="TABLE">
+      <column name="id" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="Date_R" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <column name="Name_R" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="Type_R" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="ReunionTopic_R" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="Description_R" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
+      <column name="Location_R" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="File_R" sqlType="BLOB" precision="65535" scale="0" nullable="false" jdbcType="-4"/>
+      <column name="id_EventSchedule" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <column name="updated_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="risk_matrices" schema="" catalog="sgsst" type="TABLE">
+      <column name="id" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="Name_R" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="Description" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
+      <column name="Type_R" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="Matrix_R" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6"/>
+      <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <column name="updated_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="risks" schema="" catalog="sgsst" type="TABLE">
+      <column name="id" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="Description_RI" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="SpecifyLocation_RI" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
+      <column name="PhotographicRecord_RI" sqlType="BLOB" precision="65535" scale="0" nullable="false" jdbcType="-4"/>
+      <column name="Name_RI" sqlType="VARCHAR" precision="60" scale="0" nullable="false" jdbcType="12"/>
+      <column name="Calification_RI" sqlType="CHAR" precision="255" scale="0" nullable="false" jdbcType="1"/>
+      <column name="ControlMeasure_RI" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
+      <column name="ControlHierarchy_RI" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="id_Person" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="id_Inspection" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="remember_token" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <column name="updated_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="specifications" schema="" catalog="sgsst" type="TABLE">
+      <column name="id" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="Description_SP" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
+      <column name="ExpirationDate_SP" sqlType="DATE" precision="10" scale="0" nullable="false" jdbcType="91"/>
+      <column name="State" sqlType="CHAR" precision="255" scale="0" nullable="false" jdbcType="1"/>
+      <column name="id_Element" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="id_HQ" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <column name="updated_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="timetables" schema="" catalog="sgsst" type="TABLE">
+      <column name="id" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="Date_TT" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <column name="Date_E" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <column name="Description_TT" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
+      <column name="id_HQ" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="id_Person" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <column name="updated_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="tracings" schema="" catalog="sgsst" type="TABLE">
+      <column name="id" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="Type_Tra" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="Description_Tra" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
+      <column name="Gravity_Tra" sqlType="CHAR" precision="255" scale="0" nullable="false" jdbcType="1"/>
+      <column name="Date_Tra" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <column name="DateControl_Tra" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <column name="id_Person" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <column name="updated_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="users" schema="" catalog="sgsst" type="TABLE">
+      <column name="id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="email" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="password" sqlType="VARCHAR" precision="60" scale="0" nullable="false" jdbcType="12"/>
+      <column name="remember_token" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <column name="updated_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <index name="users_email_unique" unique="true" columns="email"/>
+    </table>
+    <table name="verification_factors" schema="" catalog="sgsst" type="TABLE">
+      <column name="id" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="Date_VF" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <column name="ImplementedAction_VF" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6"/>
+      <column name="id_Risk" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <column name="updated_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="verification_risks" schema="" catalog="sgsst" type="TABLE">
+      <column name="id" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="Date_VR" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <column name="ImplementedAction_VR" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6"/>
+      <column name="EffectiveControl_VR" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6"/>
+      <column name="id_Risk" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <column name="updated_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+  </data-source>
+</component>
