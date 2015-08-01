@@ -441,7 +441,7 @@
     </table>
     <table name="risk_matrices" schema="" catalog="sgsst" type="TABLE">
       <column name="id" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
-      <column name="Date_RM" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <column name="DateModification_RM" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
       <column name="Calification_RM" sqlType="CHAR" precision="255" scale="0" nullable="false" jdbcType="1"/>
       <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
       <column name="updated_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
