@@ -16,8 +16,8 @@ class CreateDetailTracingPeopleTable extends Migration {
 		{
 			$table->bigincrements('id');
 			$table->string('PersonRole_TP');
-			$table->bigInteger('idTracing');
-			$table->bigInteger('idPerson');
+			$table->bigInteger('idTracing')->unsigned();
+			$table->bigInteger('idPerson')->unsigned();
 			$table->timestamps();
 		});
 	}

@@ -17,8 +17,8 @@ class CreateDetailPersonCopasstsTable extends Migration {
 			$table->bigincrements('id');
 			$table->bigInteger('Level_PC');
 			$table->date('AdmissionDate_PC');
-			$table->bigInteger('idCopasst');
-			$table->bigInteger('idPerson');
+			$table->bigInteger('idCopasst')->unsigned();
+			$table->bigInteger('idPerson')->unsigned();
 			$table->timestamps();
 		});
 	}

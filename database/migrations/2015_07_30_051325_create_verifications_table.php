@@ -18,7 +18,7 @@ class CreateVerificationsTable extends Migration {
 			$table->dateTime('Date_VR');
 			$table->boolean('ImplementedAction_VR');
 			$table->boolean('EffectiveControl_VR');
-			$table->bigInteger('idWeakRisk');
+			$table->bigInteger('idWeakRisk')->unsigned();
 			$table->timestamps();
 		});
 	}

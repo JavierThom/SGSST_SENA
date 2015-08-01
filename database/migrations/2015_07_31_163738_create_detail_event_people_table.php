@@ -16,8 +16,8 @@ class CreateDetailEventPeopleTable extends Migration {
 		{
 			$table->bigincrements('id');
 			$table->string('PersonRole_EvP');
-			$table->bigInteger('idPerson');
-			$table->bigInteger('idEvent');
+			$table->bigInteger('idPerson')->unsigned();
+			$table->bigInteger('idEvent')->unsigned();
 			$table->timestamps();
 		});
 	}

@@ -17,7 +17,7 @@ class CreateEmergencyPlansTable extends Migration {
 			$table->bigincrements('id');
 			$table->mediumText('Name_EP');
 			$table->text('Description_EP');
-			$table->bigInteger('idDetailRiskMatrix');
+			$table->bigInteger('idDetailRiskMatrix')->unsigned();
 			$table->timestamps();
 		});
 	}

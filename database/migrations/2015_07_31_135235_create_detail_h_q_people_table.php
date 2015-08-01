@@ -17,8 +17,8 @@ class CreateDetailHQPeopleTable extends Migration {
 			$table->bigincrements('id');
 			$table->string('RelocationType_HQP', 100);
 			$table->text('RelocationDescription_HQP');
-			$table->bigInteger('idHeadquarter');
-			$table->bigInteger('idPerson');
+			$table->bigInteger('idHQ')->unsigned();
+			$table->bigInteger('idPerson')->unsigned();
 			$table->timestamps();
 		});
 	}

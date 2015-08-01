@@ -16,8 +16,8 @@ class CreateDetailPositionOccupationalRisksTable extends Migration {
 		{
 			$table->bigincrements('id');
 			$table->char('LevelRisk_POR');
-			$table->bigInteger('idWeakRisk');
-			$table->bigInteger('idPosition');
+			$table->bigInteger('idOccupationalRisk')->unsigned();
+			$table->bigInteger('idPosition')->unsigned();
 			$table->timestamps();
 		});
 	}

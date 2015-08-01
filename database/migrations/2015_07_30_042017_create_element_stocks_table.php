@@ -16,8 +16,8 @@ class CreateElementStocksTable extends Migration {
 		{
 			$table->bigincrements('id');
 			$table->bigInteger('Quantity_ES');
-			$table->bigInteger('idElements');
-			$table->bigInteger('idAreaHQ');
+			$table->bigInteger('idElement')->unsigned();
+			$table->bigInteger('idAreaHQ')->unsigned();
 			$table->timestamps();
 		});
 	}

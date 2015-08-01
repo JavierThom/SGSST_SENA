@@ -7,26 +7,17 @@
     </database-info>
     <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
     <schema name="" catalog="sgsst"/>
-    <table name="activities" schema="" catalog="sgsst" type="TABLE">
-      <column name="id" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
-      <column name="Name_Ac" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
-      <column name="Type_Ac" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
-      <column name="Description_Ac" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
-      <column name="Date_Ac" sqlType="DATE" precision="10" scale="0" nullable="false" jdbcType="91"/>
-      <column name="File_Ac" sqlType="BLOB" precision="65535" scale="0" nullable="false" jdbcType="-4"/>
-      <column name="idReunion" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
-      <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
-      <column name="updated_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
-      <primary-key name="PRIMARY" columns="id"/>
-    </table>
     <table name="area_headquarters" schema="" catalog="sgsst" type="TABLE">
       <column name="id" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
       <column name="Name_Area" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
       <column name="Description_Area" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
-      <column name="id_HQ" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="idHQ" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5"/>
       <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
       <column name="updated_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
       <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="area_headquarters_idhq_foreign" columns="idHQ" ref-table="headquarters" ref-schema="" ref-catalog="sgsst" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="element_stocks_idareahq_foreign" table="element_stocks" schema="" catalog="sgsst" columns="idAreaHQ"/>
+      <index name="area_headquarters_idhq_foreign" unique="false" columns="idHQ"/>
     </table>
     <table name="centers" schema="" catalog="sgsst" type="TABLE">
       <column name="id" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
@@ -34,82 +25,193 @@
       <column name="Name_Cen" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
       <column name="Address_Cen" sqlType="VARCHAR" precision="80" scale="0" nullable="false" jdbcType="12"/>
       <column name="Phone_Cen" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
-      <column name="id_Regional" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="idRegional" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5"/>
       <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
       <column name="updated_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
       <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="centers_idregional_foreign" columns="idRegional" ref-table="regionals" ref-schema="" ref-catalog="sgsst" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="detail_center_h_qs_idcenter_foreign" table="detail_center_h_qs" schema="" catalog="sgsst" columns="idCenter"/>
+      <index name="centers_idregional_foreign" unique="false" columns="idRegional"/>
+    </table>
+    <table name="copassts" schema="" catalog="sgsst" type="TABLE">
+      <column name="id" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="StartDate_CT" sqlType="DATE" precision="10" scale="0" nullable="false" jdbcType="91"/>
+      <column name="FinishDate_CT" sqlType="DATE" precision="10" scale="0" nullable="false" jdbcType="91"/>
+      <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <column name="updated_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="detail_person_copassts_idcopasst_foreign" table="detail_person_copassts" schema="" catalog="sgsst" columns="idCopasst"/>
+    </table>
+    <table name="detail_area_elements_emergencies" schema="" catalog="sgsst" type="TABLE">
+      <column name="id" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="Description_AEE" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
+      <column name="ExpirationDate_AEE" sqlType="DATE" precision="10" scale="0" nullable="false" jdbcType="91"/>
+      <column name="State_AEE" sqlType="CHAR" precision="255" scale="0" nullable="false" jdbcType="1"/>
+      <column name="idElement" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="idHQ" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <column name="updated_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="detail_area_elements_emergencies_idelement_foreign" columns="idElement" ref-table="elements_emergencies" ref-schema="" ref-catalog="sgsst" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="detail_area_elements_emergencies_idhq_foreign" columns="idHQ" ref-table="headquarters" ref-schema="" ref-catalog="sgsst" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="detail_area_elements_emergencies_idelement_foreign" unique="false" columns="idElement"/>
+      <index name="detail_area_elements_emergencies_idhq_foreign" unique="false" columns="idHQ"/>
     </table>
     <table name="detail_center_h_qs" schema="" catalog="sgsst" type="TABLE">
       <column name="id" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
-      <column name="idHeadquarter" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
-      <column name="idCenter" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="idHQ" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="idCenter" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5"/>
       <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
       <column name="updated_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
       <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="detail_center_h_qs_idcenter_foreign" columns="idCenter" ref-table="centers" ref-schema="" ref-catalog="sgsst" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="detail_center_h_qs_idhq_foreign" columns="idHQ" ref-table="headquarters" ref-schema="" ref-catalog="sgsst" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="detail_center_h_qs_idcenter_foreign" unique="false" columns="idCenter"/>
+      <index name="detail_center_h_qs_idhq_foreign" unique="false" columns="idHQ"/>
+    </table>
+    <table name="detail_event_guests" schema="" catalog="sgsst" type="TABLE">
+      <column name="id" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="idGuest" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="idEvent" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <column name="updated_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="detail_event_guests_idevent_foreign" columns="idEvent" ref-table="events" ref-schema="" ref-catalog="sgsst" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="detail_event_guests_idguest_foreign" columns="idGuest" ref-table="guests" ref-schema="" ref-catalog="sgsst" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="detail_event_guests_idevent_foreign" unique="false" columns="idEvent"/>
+      <index name="detail_event_guests_idguest_foreign" unique="false" columns="idGuest"/>
+    </table>
+    <table name="detail_event_people" schema="" catalog="sgsst" type="TABLE">
+      <column name="id" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="PersonRole_EvP" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="idPerson" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="idEvent" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <column name="updated_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="detail_event_people_idevent_foreign" columns="idEvent" ref-table="events" ref-schema="" ref-catalog="sgsst" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="detail_event_people_idperson_foreign" columns="idPerson" ref-table="people" ref-schema="" ref-catalog="sgsst" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="detail_event_people_idevent_foreign" unique="false" columns="idEvent"/>
+      <index name="detail_event_people_idperson_foreign" unique="false" columns="idPerson"/>
     </table>
     <table name="detail_h_q_people" schema="" catalog="sgsst" type="TABLE">
       <column name="id" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
       <column name="RelocationType_HQP" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
       <column name="RelocationDescription_HQP" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
-      <column name="idHeadquarter" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
-      <column name="idPerson" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="idHQ" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="idPerson" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5"/>
       <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
       <column name="updated_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
       <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="detail_h_q_people_idhq_foreign" columns="idHQ" ref-table="headquarters" ref-schema="" ref-catalog="sgsst" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="detail_h_q_people_idperson_foreign" columns="idPerson" ref-table="people" ref-schema="" ref-catalog="sgsst" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="detail_h_q_people_idhq_foreign" unique="false" columns="idHQ"/>
+      <index name="detail_h_q_people_idperson_foreign" unique="false" columns="idPerson"/>
     </table>
     <table name="detail_incident_people" schema="" catalog="sgsst" type="TABLE">
       <column name="id" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
       <column name="PersonRole_IP" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
-      <column name="idPerson_IP" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
-      <column name="idIncident_IP" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="idPerson" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="idIncident" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5"/>
       <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
       <column name="updated_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
       <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="detail_incident_people_idincident_foreign" columns="idIncident" ref-table="incidents" ref-schema="" ref-catalog="sgsst" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="detail_incident_people_idperson_foreign" columns="idPerson" ref-table="people" ref-schema="" ref-catalog="sgsst" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="detail_incident_people_idincident_foreign" unique="false" columns="idIncident"/>
+      <index name="detail_incident_people_idperson_foreign" unique="false" columns="idPerson"/>
     </table>
     <table name="detail_p_p_i_people" schema="" catalog="sgsst" type="TABLE">
       <column name="id" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
       <column name="EndowmentDate_PPIP" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
       <column name="EndowmentDescription_PPIP" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
-      <column name="idPerson" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
-      <column name="idPersonalPI" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="idPerson" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="idPersonalPI" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5"/>
       <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
       <column name="updated_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
       <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="detail_p_p_i_people_idperson_foreign" columns="idPerson" ref-table="people" ref-schema="" ref-catalog="sgsst" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="detail_p_p_i_people_idpersonalpi_foreign" columns="idPersonalPI" ref-table="personal_protection_items" ref-schema="" ref-catalog="sgsst" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="detail_p_p_i_people_idperson_foreign" unique="false" columns="idPerson"/>
+      <index name="detail_p_p_i_people_idpersonalpi_foreign" unique="false" columns="idPersonalPI"/>
+    </table>
+    <table name="detail_person_copassts" schema="" catalog="sgsst" type="TABLE">
+      <column name="id" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="Level_PC" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="AdmissionDate_PC" sqlType="DATE" precision="10" scale="0" nullable="false" jdbcType="91"/>
+      <column name="idCopasst" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="idPerson" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <column name="updated_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="detail_person_copassts_idcopasst_foreign" columns="idCopasst" ref-table="copassts" ref-schema="" ref-catalog="sgsst" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="detail_person_copassts_idperson_foreign" columns="idPerson" ref-table="people" ref-schema="" ref-catalog="sgsst" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="detail_person_copassts_idcopasst_foreign" unique="false" columns="idCopasst"/>
+      <index name="detail_person_copassts_idperson_foreign" unique="false" columns="idPerson"/>
     </table>
     <table name="detail_position_occupational_risks" schema="" catalog="sgsst" type="TABLE">
       <column name="id" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
       <column name="LevelRisk_POR" sqlType="CHAR" precision="255" scale="0" nullable="false" jdbcType="1"/>
-      <column name="idWeakRisk" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
-      <column name="idPosition" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="idOccupationalRisk" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="idPosition" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5"/>
       <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
       <column name="updated_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
       <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="detail_position_occupational_risks_idoccupationalrisk_foreign" columns="idOccupationalRisk" ref-table="occupational_risks" ref-schema="" ref-catalog="sgsst" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="detail_position_occupational_risks_idposition_foreign" columns="idPosition" ref-table="positions" ref-schema="" ref-catalog="sgsst" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="detail_position_occupational_risks_idoccupationalrisk_foreign" unique="false" columns="idOccupationalRisk"/>
+      <index name="detail_position_occupational_risks_idposition_foreign" unique="false" columns="idPosition"/>
     </table>
     <table name="detail_position_people" schema="" catalog="sgsst" type="TABLE">
       <column name="id" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
-      <column name="idPosition" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
-      <column name="IdPerson" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="idPosition" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="IdPerson" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5"/>
       <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
       <column name="updated_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
       <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="detail_position_people_idperson_foreign" columns="IdPerson" ref-table="people" ref-schema="" ref-catalog="sgsst" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="detail_position_people_idposition_foreign" columns="idPosition" ref-table="positions" ref-schema="" ref-catalog="sgsst" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="detail_position_people_idperson_foreign" unique="false" columns="IdPerson"/>
+      <index name="detail_position_people_idposition_foreign" unique="false" columns="idPosition"/>
+    </table>
+    <table name="detail_risk_matrix_risks" schema="" catalog="sgsst" type="TABLE">
+      <column name="id" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="idWeakRisk" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="idRiskMatrix" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <column name="updated_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="detail_risk_matrix_risks_idriskmatrix_foreign" columns="idRiskMatrix" ref-table="risk_matrices" ref-schema="" ref-catalog="sgsst" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="detail_risk_matrix_risks_idweakrisk_foreign" columns="idWeakRisk" ref-table="weak_risks" ref-schema="" ref-catalog="sgsst" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="emergency_plans_iddetailriskmatrix_foreign" table="emergency_plans" schema="" catalog="sgsst" columns="idDetailRiskMatrix"/>
+      <index name="detail_risk_matrix_risks_idriskmatrix_foreign" unique="false" columns="idRiskMatrix"/>
+      <index name="detail_risk_matrix_risks_idweakrisk_foreign" unique="false" columns="idWeakRisk"/>
     </table>
     <table name="detail_tracing_people" schema="" catalog="sgsst" type="TABLE">
       <column name="id" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
       <column name="PersonRole_TP" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
-      <column name="idTracing" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
-      <column name="idPerson" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="idTracing" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="idPerson" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5"/>
       <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
       <column name="updated_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
       <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="detail_tracing_people_idperson_foreign" columns="idPerson" ref-table="people" ref-schema="" ref-catalog="sgsst" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="detail_tracing_people_idtracing_foreign" columns="idTracing" ref-table="tracings" ref-schema="" ref-catalog="sgsst" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="detail_tracing_people_idperson_foreign" unique="false" columns="idPerson"/>
+      <index name="detail_tracing_people_idtracing_foreign" unique="false" columns="idTracing"/>
     </table>
     <table name="element_stocks" schema="" catalog="sgsst" type="TABLE">
       <column name="id" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
       <column name="Quantity_ES" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
-      <column name="idElements" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
-      <column name="idAreaHQ" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="idElement" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="idAreaHQ" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5"/>
       <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
       <column name="updated_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
       <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="element_stocks_idareahq_foreign" columns="idAreaHQ" ref-table="area_headquarters" ref-schema="" ref-catalog="sgsst" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="element_stocks_idelement_foreign" columns="idElement" ref-table="elements_emergencies" ref-schema="" ref-catalog="sgsst" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="element_stocks_idareahq_foreign" unique="false" columns="idAreaHQ"/>
+      <index name="element_stocks_idelement_foreign" unique="false" columns="idElement"/>
     </table>
     <table name="elements_emergencies" schema="" catalog="sgsst" type="TABLE">
       <column name="id" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
@@ -120,15 +222,31 @@
       <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
       <column name="updated_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
       <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="detail_area_elements_emergencies_idelement_foreign" table="detail_area_elements_emergencies" schema="" catalog="sgsst" columns="idElement"/>
+      <exported-key name="element_stocks_idelement_foreign" table="element_stocks" schema="" catalog="sgsst" columns="idElement"/>
+      <exported-key name="request_elements_idelement_foreign" table="request_elements" schema="" catalog="sgsst" columns="idElement"/>
     </table>
     <table name="emergency_plans" schema="" catalog="sgsst" type="TABLE">
       <column name="id" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
       <column name="Name_EP" sqlType="MEDIUMTEXT" precision="16777215" scale="0" nullable="false" jdbcType="-1"/>
       <column name="Description_EP" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
-      <column name="idDetailRiskMatrix" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="idDetailRiskMatrix" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5"/>
       <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
       <column name="updated_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
       <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="emergency_plans_iddetailriskmatrix_foreign" columns="idDetailRiskMatrix" ref-table="detail_risk_matrix_risks" ref-schema="" ref-catalog="sgsst" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="emergency_plans_iddetailriskmatrix_foreign" unique="false" columns="idDetailRiskMatrix"/>
+    </table>
+    <table name="environmental_measures" schema="" catalog="sgsst" type="TABLE">
+      <column name="id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="MeasurementFactor" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="MeasurementControlFactor" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="idWeakRisks" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <column name="updated_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="environmental_measures_idweakrisks_foreign" columns="idWeakRisks" ref-table="weak_risks" ref-schema="" ref-catalog="sgsst" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="environmental_measures_idweakrisks_foreign" unique="false" columns="idWeakRisks"/>
     </table>
     <table name="events" schema="" catalog="sgsst" type="TABLE">
       <column name="id" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
@@ -144,17 +262,36 @@
       <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
       <column name="updated_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
       <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="detail_event_guests_idevent_foreign" table="detail_event_guests" schema="" catalog="sgsst" columns="idEvent"/>
+      <exported-key name="detail_event_people_idevent_foreign" table="detail_event_people" schema="" catalog="sgsst" columns="idEvent"/>
     </table>
     <table name="exams" schema="" catalog="sgsst" type="TABLE">
       <column name="id" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
       <column name="Type_Exa" sqlType="VARCHAR" precision="30" scale="0" nullable="false" jdbcType="12"/>
       <column name="DateReg_Exa" sqlType="DATE" precision="10" scale="0" nullable="false" jdbcType="91"/>
       <column name="Novelty_Exa" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
-      <column name="idPerson" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="idPerson" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5"/>
       <column name="remember_token" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
       <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
       <column name="updated_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
       <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="exams_idperson_foreign" columns="idPerson" ref-table="people" ref-schema="" ref-catalog="sgsst" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="exams_idperson_foreign" unique="false" columns="idPerson"/>
+    </table>
+    <table name="guests" schema="" catalog="sgsst" type="TABLE">
+      <column name="id" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="Document_G" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="DocumentType_G" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="firstName_G" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="lastName_G" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="Phone_G" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="E-mail_G" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <column name="updated_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="detail_event_guests_idguest_foreign" table="detail_event_guests" schema="" catalog="sgsst" columns="idGuest"/>
+      <index name="guests_document_g_unique" unique="true" columns="Document_G"/>
+      <index name="guests_e_mail_g_unique" unique="true" columns="E-mail_G"/>
     </table>
     <table name="headquarters" schema="" catalog="sgsst" type="TABLE">
       <column name="id" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
@@ -164,6 +301,11 @@
       <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
       <column name="updated_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
       <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="area_headquarters_idhq_foreign" table="area_headquarters" schema="" catalog="sgsst" columns="idHQ"/>
+      <exported-key name="detail_area_elements_emergencies_idhq_foreign" table="detail_area_elements_emergencies" schema="" catalog="sgsst" columns="idHQ"/>
+      <exported-key name="detail_center_h_qs_idhq_foreign" table="detail_center_h_qs" schema="" catalog="sgsst" columns="idHQ"/>
+      <exported-key name="detail_h_q_people_idhq_foreign" table="detail_h_q_people" schema="" catalog="sgsst" columns="idHQ"/>
+      <exported-key name="timetables_idhq_foreign" table="timetables" schema="" catalog="sgsst" columns="idHQ"/>
     </table>
     <table name="incidents" schema="" catalog="sgsst" type="TABLE">
       <column name="id" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
@@ -175,6 +317,7 @@
       <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
       <column name="updated_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
       <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="detail_incident_people_idincident_foreign" table="detail_incident_people" schema="" catalog="sgsst" columns="idIncident"/>
     </table>
     <table name="inspections" schema="" catalog="sgsst" type="TABLE">
       <column name="id" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
@@ -185,20 +328,15 @@
       <column name="Deadline_Ins" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
       <column name="File_Ins" sqlType="BLOB" precision="65535" scale="0" nullable="false" jdbcType="-4"/>
       <column name="FileName_Ins" sqlType="VARCHAR" precision="30" scale="0" nullable="false" jdbcType="12"/>
-      <column name="idPersonMySQL - sgsst@localhost" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="idPerson" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5"/>
       <column name="remember_token" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
       <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
       <column name="updated_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
       <primary-key name="PRIMARY" columns="id"/>
-    </table>
-    <table name="measurement_environmental" schema="" catalog="sgsst" type="TABLE">
-      <column name="id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
-      <column name="measurementFactor" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
-      <column name="MeasurementControlFactor" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
-      <column name="idWeakRisk" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
-      <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
-      <column name="updated_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
-      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="inspections_idperson_foreign" columns="idPerson" ref-table="people" ref-schema="" ref-catalog="sgsst" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="request_elements_idinspection_foreign" table="request_elements" schema="" catalog="sgsst" columns="idInspection"/>
+      <exported-key name="weak_risks_idinspection_foreign" table="weak_risks" schema="" catalog="sgsst" columns="idInspection"/>
+      <index name="inspections_idperson_foreign" unique="false" columns="idPerson"/>
     </table>
     <table name="migrations" schema="" catalog="sgsst" type="TABLE">
       <column name="migration" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
@@ -210,6 +348,7 @@
       <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
       <column name="updated_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
       <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="detail_position_occupational_risks_idoccupationalrisk_foreign" table="detail_position_occupational_risks" schema="" catalog="sgsst" columns="idOccupationalRisk"/>
     </table>
     <table name="password_resets" schema="" catalog="sgsst" type="TABLE">
       <column name="email" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
@@ -241,6 +380,16 @@
       <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
       <column name="updated_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
       <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="detail_event_people_idperson_foreign" table="detail_event_people" schema="" catalog="sgsst" columns="idPerson"/>
+      <exported-key name="detail_h_q_people_idperson_foreign" table="detail_h_q_people" schema="" catalog="sgsst" columns="idPerson"/>
+      <exported-key name="detail_incident_people_idperson_foreign" table="detail_incident_people" schema="" catalog="sgsst" columns="idPerson"/>
+      <exported-key name="detail_p_p_i_people_idperson_foreign" table="detail_p_p_i_people" schema="" catalog="sgsst" columns="idPerson"/>
+      <exported-key name="detail_person_copassts_idperson_foreign" table="detail_person_copassts" schema="" catalog="sgsst" columns="idPerson"/>
+      <exported-key name="detail_position_people_idperson_foreign" table="detail_position_people" schema="" catalog="sgsst" columns="IdPerson"/>
+      <exported-key name="detail_tracing_people_idperson_foreign" table="detail_tracing_people" schema="" catalog="sgsst" columns="idPerson"/>
+      <exported-key name="exams_idperson_foreign" table="exams" schema="" catalog="sgsst" columns="idPerson"/>
+      <exported-key name="inspections_idperson_foreign" table="inspections" schema="" catalog="sgsst" columns="idPerson"/>
+      <exported-key name="timetables_idperson_foreign" table="timetables" schema="" catalog="sgsst" columns="idPerson"/>
       <exported-key name="weak_risks_idperson_foreign" table="weak_risks" schema="" catalog="sgsst" columns="idPerson"/>
       <index name="people_document_per_unique" unique="true" columns="Document_Per"/>
     </table>
@@ -251,6 +400,7 @@
       <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
       <column name="updated_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
       <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="detail_p_p_i_people_idpersonalpi_foreign" table="detail_p_p_i_people" schema="" catalog="sgsst" columns="idPersonalPI"/>
     </table>
     <table name="positions" schema="" catalog="sgsst" type="TABLE">
       <column name="id" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
@@ -259,29 +409,35 @@
       <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
       <column name="updated_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
       <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="detail_position_occupational_risks_idposition_foreign" table="detail_position_occupational_risks" schema="" catalog="sgsst" columns="idPosition"/>
+      <exported-key name="detail_position_people_idposition_foreign" table="detail_position_people" schema="" catalog="sgsst" columns="idPosition"/>
     </table>
     <table name="regionals" schema="" catalog="sgsst" type="TABLE">
-      <column name="Id_RG" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="id" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
       <column name="Phone_RG" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
       <column name="Name_RG" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
       <column name="City_RG" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
       <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
       <column name="updated_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
-      <primary-key name="PRIMARY" columns="Id_RG"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="centers_idregional_foreign" table="centers" schema="" catalog="sgsst" columns="idRegional"/>
     </table>
-    <table name="reunions" schema="" catalog="sgsst" type="TABLE">
+    <table name="request_elements" schema="" catalog="sgsst" type="TABLE">
       <column name="id" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
-      <column name="Date_R" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
-      <column name="Name_R" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
-      <column name="Type_R" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
-      <column name="ReunionTopic_R" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
-      <column name="Description_R" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
-      <column name="Location_R" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
-      <column name="File_R" sqlType="BLOB" precision="65535" scale="0" nullable="false" jdbcType="-4"/>
-      <column name="id_EventSchedule" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="Date_RE" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <column name="Description-RE" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
+      <column name="Deadline_RE" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <column name="Quantity_RE" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="State_RE" sqlType="CHAR" precision="255" scale="0" nullable="false" jdbcType="1"/>
+      <column name="idInspection" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="idElement" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5"/>
       <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
       <column name="updated_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
       <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="request_elements_idelement_foreign" columns="idElement" ref-table="elements_emergencies" ref-schema="" ref-catalog="sgsst" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="request_elements_idinspection_foreign" columns="idInspection" ref-table="inspections" ref-schema="" ref-catalog="sgsst" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="request_elements_idelement_foreign" unique="false" columns="idElement"/>
+      <index name="request_elements_idinspection_foreign" unique="false" columns="idInspection"/>
     </table>
     <table name="risk_matrices" schema="" catalog="sgsst" type="TABLE">
       <column name="id" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
@@ -290,28 +446,22 @@
       <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
       <column name="updated_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
       <primary-key name="PRIMARY" columns="id"/>
-    </table>
-    <table name="specifications" schema="" catalog="sgsst" type="TABLE">
-      <column name="id" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
-      <column name="Description_SP" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
-      <column name="ExpirationDate_SP" sqlType="DATE" precision="10" scale="0" nullable="false" jdbcType="91"/>
-      <column name="State" sqlType="CHAR" precision="255" scale="0" nullable="false" jdbcType="1"/>
-      <column name="id_Element" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
-      <column name="id_HQ" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
-      <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
-      <column name="updated_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
-      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="detail_risk_matrix_risks_idriskmatrix_foreign" table="detail_risk_matrix_risks" schema="" catalog="sgsst" columns="idRiskMatrix"/>
     </table>
     <table name="timetables" schema="" catalog="sgsst" type="TABLE">
       <column name="id" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
       <column name="Date_Timetable" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
       <column name="Date_Event" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
       <column name="Description_TT" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
-      <column name="idHQ" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
-      <column name="idPerson" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="idHQ" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="idPerson" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5"/>
       <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
       <column name="updated_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
       <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="timetables_idhq_foreign" columns="idHQ" ref-table="headquarters" ref-schema="" ref-catalog="sgsst" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="timetables_idperson_foreign" columns="idPerson" ref-table="people" ref-schema="" ref-catalog="sgsst" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="timetables_idhq_foreign" unique="false" columns="idHQ"/>
+      <index name="timetables_idperson_foreign" unique="false" columns="idPerson"/>
     </table>
     <table name="tracings" schema="" catalog="sgsst" type="TABLE">
       <column name="id" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
@@ -323,6 +473,7 @@
       <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
       <column name="updated_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
       <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="detail_tracing_people_idtracing_foreign" table="detail_tracing_people" schema="" catalog="sgsst" columns="idTracing"/>
     </table>
     <table name="users" schema="" catalog="sgsst" type="TABLE">
       <column name="id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
@@ -340,10 +491,12 @@
       <column name="Date_VR" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
       <column name="ImplementedAction_VR" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6"/>
       <column name="EffectiveControl_VR" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6"/>
-      <column name="idWeakRisk" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="idWeakRisk" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5"/>
       <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
       <column name="updated_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
       <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="verifications_idweakrisk_foreign" columns="idWeakRisk" ref-table="weak_risks" ref-schema="" ref-catalog="sgsst" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="verifications_idweakrisk_foreign" unique="false" columns="idWeakRisk"/>
     </table>
     <table name="weak_risks" schema="" catalog="sgsst" type="TABLE">
       <column name="id" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
@@ -360,7 +513,12 @@
       <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
       <column name="updated_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
       <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="weak_risks_idinspection_foreign" columns="idInspection" ref-table="inspections" ref-schema="" ref-catalog="sgsst" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
       <foreign-key name="weak_risks_idperson_foreign" columns="idPerson" ref-table="people" ref-schema="" ref-catalog="sgsst" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="detail_risk_matrix_risks_idweakrisk_foreign" table="detail_risk_matrix_risks" schema="" catalog="sgsst" columns="idWeakRisk"/>
+      <exported-key name="environmental_measures_idweakrisks_foreign" table="environmental_measures" schema="" catalog="sgsst" columns="idWeakRisks"/>
+      <exported-key name="verifications_idweakrisk_foreign" table="verifications" schema="" catalog="sgsst" columns="idWeakRisk"/>
+      <index name="weak_risks_idinspection_foreign" unique="false" columns="idInspection"/>
       <index name="weak_risks_idperson_foreign" unique="false" columns="idPerson"/>
     </table>
   </data-source>

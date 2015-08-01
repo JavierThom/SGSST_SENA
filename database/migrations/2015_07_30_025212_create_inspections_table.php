@@ -22,7 +22,7 @@ class CreateInspectionsTable extends Migration {
 			$table->dateTime('Deadline_Ins');
 			$table->binary('File_Ins');
 			$table->string('FileName_Ins', 30);
-			$table->bigInteger('idPersonMySQL - sgsst@localhost');
+			$table->bigInteger('idPerson')->unsigned();
 			$table->rememberToken();
 			$table->timestamps();
 		});

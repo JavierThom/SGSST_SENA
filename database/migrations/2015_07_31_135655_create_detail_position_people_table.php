@@ -15,8 +15,8 @@ class CreateDetailPositionPeopleTable extends Migration {
 		Schema::create('detail_position_people', function(Blueprint $table)
 		{
 			$table->bigincrements('id');
-			$table->bigInteger('idPosition');
-			$table->bigInteger('IdPerson');
+			$table->bigInteger('idPosition')->unsigned();
+			$table->bigInteger('IdPerson')->unsigned();
 			$table->timestamps();
 		});
 	}

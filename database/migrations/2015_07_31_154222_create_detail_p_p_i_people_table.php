@@ -17,8 +17,8 @@ class CreateDetailPPIPeopleTable extends Migration {
 			$table->bigincrements('id');
 			$table->dateTime('EndowmentDate_PPIP');
 			$table->text('EndowmentDescription_PPIP');
-			$table->bigInteger('idPerson');
-			$table->bigInteger('idPersonalPI');
+			$table->bigInteger('idPerson')->unsigned();
+			$table->bigInteger('idPersonalPI')->unsigned();
 			$table->timestamps();
 		});
 	}

@@ -14,7 +14,7 @@ class CreateRegionalsTable extends Migration {
 	{
 		Schema::create('regionals', function(Blueprint $table)
 		{
-			$table->bigIncrements('Id_RG');
+			$table->bigIncrements('id');
 			$table->string('Phone_RG', 20);
 			$table->string('Name_RG', 50);
 			$table->string('City_RG', 50);

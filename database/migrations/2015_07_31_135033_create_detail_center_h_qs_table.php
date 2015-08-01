@@ -15,8 +15,8 @@ class CreateDetailCenterHQsTable extends Migration {
 		Schema::create('detail_center_h_qs', function(Blueprint $table)
 		{
 			$table->bigincrements('id');
-			$table->bigInteger('idHeadquarter');
-			$table->bigInteger('idCenter');
+			$table->bigInteger('idHQ')->unsigned();
+			$table->bigInteger('idCenter')->unsigned();
 			$table->timestamps();
 		});
 	}

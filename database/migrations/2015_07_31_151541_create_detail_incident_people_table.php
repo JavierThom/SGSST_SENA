@@ -16,8 +16,8 @@ class CreateDetailIncidentPeopleTable extends Migration {
 		{
 			$table->bigincrements('id');
 			$table->string('PersonRole_IP');
-			$table->bigInteger('idPerson_IP');
-			$table->bigInteger('idIncident_IP');
+			$table->bigInteger('idPerson')->unsigned();
+			$table->bigInteger('idIncident')->unsigned();
 			$table->timestamps();
 		});
 	}

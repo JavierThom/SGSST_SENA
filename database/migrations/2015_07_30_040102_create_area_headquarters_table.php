@@ -17,7 +17,7 @@ class CreateAreaHeadquartersTable extends Migration {
 			$table->bigincrements('id');
 			$table->string('Name_Area', 20);
 			$table->text('Description_Area');
-			$table->bigInteger('id_HQ');
+			$table->bigInteger('idHQ')->unsigned();
 			$table->timestamps();
 		});
 	}

@@ -15,8 +15,8 @@ class CreateDetailRiskMatrixRisksTable extends Migration {
 		Schema::create('detail_risk_matrix_risks', function(Blueprint $table)
 		{
 			$table->bigincrements('id');
-			$table->bigInteger('idWeakRisk');
-			$table->bigInteger('idRiskMatrix');
+			$table->bigInteger('idWeakRisk')->unsigned();
+			$table->bigInteger('idRiskMatrix')->unsigned();
 			$table->timestamps();
 		});
 	}

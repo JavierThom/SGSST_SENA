@@ -18,8 +18,8 @@ class CreateDetailAreaElementsEmergenciesTable extends Migration {
 			$table->text('Description_AEE');
 			$table->date('ExpirationDate_AEE');
 			$table->char('State_AEE');
-			$table->bigInteger('idElement');
-			$table->bigInteger('idHQ');
+			$table->bigInteger('idElement')->unsigned();
+			$table->bigInteger('idHQ')->unsigned();
 			$table->timestamps();
 		});
 	}

@@ -18,8 +18,8 @@ class CreateTimetablesTable extends Migration {
 			$table->dateTime('Date_Timetable');
 			$table->dateTime('Date_Event');
 			$table->text('Description_TT');
-			$table->bigInteger('idHQ');
-			$table->bigInteger('idPerson');
+			$table->bigInteger('idHQ')->unsigned();
+			$table->bigInteger('idPerson')->unsigned();
 			$table->timestamps();
 		});
 	}

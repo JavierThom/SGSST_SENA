@@ -20,8 +20,8 @@ class CreateRequestElementsTable extends Migration {
 			$table->dateTime('Deadline_RE');
 			$table->bigInteger('Quantity_RE');
 			$table->char('State_RE');
-			$table->bigInteger('idInspection');
-			$table->bigInteger('idElement');
+			$table->bigInteger('idInspection')->unsigned();
+			$table->bigInteger('idElement')->unsigned();
 			$table->timestamps();
 		});
 	}
