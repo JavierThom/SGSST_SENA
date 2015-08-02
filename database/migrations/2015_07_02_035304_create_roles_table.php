@@ -29,7 +29,7 @@ class CreateRolesTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('copassts');
+		Schema::drop('roles');
 	}
 
 }

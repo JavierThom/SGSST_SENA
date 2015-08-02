@@ -283,7 +283,9 @@ class AlterAllTables extends Migration {
 				->references('id')
 				->on('events');
 		});
-
+		/*
+16 		 * Detail = Novelty-Tracing
+17 		*/
 		Schema::table('detail_novelty_tracings', function($table)
 		{
 			$table->foreign('idNovelty')
@@ -294,7 +296,9 @@ class AlterAllTables extends Migration {
 				->references('id')
 				->on('tracings');
 		});
-
+		/*
+16 		 * Detail = Incident-Tracing
+17 		*/
 		Schema::table('detail_incident_tracings', function($table)
 		{
 			$table->foreign('idTracing')
@@ -305,7 +309,9 @@ class AlterAllTables extends Migration {
 				->references('id')
 				->on('incidents');
 		});
-
+		/*
+16 		 * Detail = Relocation-Tracing
+17 		*/
 		Schema::table('detail_relocation_tracings', function($table)
 		{
 			$table->foreign('idTracing')
@@ -316,7 +322,9 @@ class AlterAllTables extends Migration {
 				->references('id')
 				->on('detail_h_q_people');
 		});
-
+		/*
+16 		 * Detail = Exams-Novelty
+17 		*/
 		Schema::table('detail_exams_novelties', function($table)
 		{
 			$table->foreign('idExam')

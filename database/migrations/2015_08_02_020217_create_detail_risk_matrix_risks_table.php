@@ -28,7 +28,7 @@ class CreateDetailRiskMatrixRisksTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('detail_risk_matrix_risks');
+		//Schema::drop('detail_risk_matrix_risks');
 	}
 
 }
