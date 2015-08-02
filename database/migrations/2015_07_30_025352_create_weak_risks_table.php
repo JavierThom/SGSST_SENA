@@ -15,13 +15,13 @@ class CreateWeakRisksTable extends Migration {
 		Schema::create('weak_risks', function(Blueprint $table)
 		{
 			$table->bigincrements('id');
-			$table->string('Description_RI');
-			$table->string('SpecifyLocation_RI', 100);
-			$table->binary('PhotographicRecord_RI');
-			$table->string('NamePhotographicRecord_RI' , 60);
-			$table->char('Calification_RI');
-			$table->text('ControlMeasure_RI');
-			$table->string('ControlHierarchy_RI', 20);
+			$table->string('DescriptionRI');
+			$table->string('SpecifyLocationRI', 100);
+			$table->binary('PhotographicRecordRI');
+			$table->string('NamePhotographicRecordRI' , 60);
+			$table->char('CalificationRI');
+			$table->text('ControlMeasureRI');
+			$table->string('ControlHierarchyRI', 20);
 			$table->bigInteger('idPerson')->unsigned();
 			$table->bigInteger('idInspection')->unsigned();
 			$table->rememberToken();

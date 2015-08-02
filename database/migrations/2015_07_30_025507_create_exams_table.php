@@ -15,9 +15,8 @@ class CreateExamsTable extends Migration {
 		Schema::create('exams', function(Blueprint $table)
 		{
 			$table->bigincrements('id');
-			$table->string('Type_Exa', 30);
-			$table->date('DateReg_Exa');
-			$table->text('Novelty_Exa');
+			$table->string('TypeExa', 30);
+			$table->date('DateRegExa');
 			$table->bigInteger('idPerson')->unsigned();
 			$table->rememberToken();
 			$table->timestamps();

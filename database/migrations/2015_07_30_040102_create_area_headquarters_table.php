@@ -15,8 +15,8 @@ class CreateAreaHeadquartersTable extends Migration {
 		Schema::create('area_headquarters', function(Blueprint $table)
 		{
 			$table->bigincrements('id');
-			$table->string('Name_Area', 20);
-			$table->text('Description_Area');
+			$table->string('NameArea', 20);
+			$table->text('DescriptionArea');
 			$table->bigInteger('idHQ')->unsigned();
 			$table->timestamps();
 		});

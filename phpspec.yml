@@ -1,5 +1,5 @@
 suites:
     main:
-        namespace: App
-        psr4_prefix: App
+        namespace: SGSST
+        psr4_prefix: SGSST
         src_path: app

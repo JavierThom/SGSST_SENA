@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateOccupationalRisksTable extends Migration {
+class CreateDetailRelocationTracingsTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,10 +12,11 @@ class CreateOccupationalRisksTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('occupational_risks', function(Blueprint $table)
+		Schema::create('detail_relocation_tracings', function(Blueprint $table)
 		{
-			$table->bigincrements('id');
-			$table->string('Name_OR', 40);
+			$table->increments('id');
+			$table->bigInteger('idTracing');
+			$table->bigInteger('idDetailHQPerson');
 			$table->timestamps();
 		});
 	}
@@ -27,7 +28,7 @@ class CreateOccupationalRisksTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('occupational_risks');
+		Schema::drop('detail_relocation_tracings');
 	}
 
 }

@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCopasstsTable extends Migration {
+class CreateRolesTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,11 +12,12 @@ class CreateCopasstsTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('copassts', function(Blueprint $table)
+		Schema::create('roles', function(Blueprint $table)
 		{
 			$table->bigincrements('id');
-			$table->date('StartDate_CT');
-			$table->date('FinishDate_CT');
+			$table->string('NameR');
+			$table->text('DescriptionR');
+			$table->char('StateR');
 			$table->timestamps();
 		});
 	}

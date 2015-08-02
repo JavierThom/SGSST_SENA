@@ -15,7 +15,7 @@ class CreateDetailEventPeopleTable extends Migration {
 		Schema::create('detail_event_people', function(Blueprint $table)
 		{
 			$table->bigincrements('id');
-			$table->string('PersonRole_EvP');
+			$table->string('PersonRoleEvP');
 			$table->bigInteger('idPerson')->unsigned();
 			$table->bigInteger('idEvent')->unsigned();
 			$table->timestamps();

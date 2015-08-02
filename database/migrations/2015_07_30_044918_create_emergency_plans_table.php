@@ -15,8 +15,8 @@ class CreateEmergencyPlansTable extends Migration {
 		Schema::create('emergency_plans', function(Blueprint $table)
 		{
 			$table->bigincrements('id');
-			$table->mediumText('Name_EP');
-			$table->text('Description_EP');
+			$table->mediumText('NameEP');
+			$table->text('DescriptionEP');
 			$table->bigInteger('idDetailRiskMatrix')->unsigned();
 			$table->timestamps();
 		});

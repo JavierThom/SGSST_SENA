@@ -15,11 +15,11 @@ class CreateIncidentsTable extends Migration {
 		Schema::create('incidents', function(Blueprint $table)
 		{
 			$table->bigincrements('id');
-			$table->string('Type_Inc', 50);
-			$table->dateTime('Date_Inc');
-			$table->text('Causes_Inc');
-			$table->text('Description_Inc');
-			$table->char('Gravity_Inc');
+			$table->string('TypeInc', 50);
+			$table->dateTime('DateInc');
+			$table->text('CausesInc');
+			$table->text('DescriptionInc');
+			$table->char('GravityInc');
 			$table->timestamps();
 		});
 	}

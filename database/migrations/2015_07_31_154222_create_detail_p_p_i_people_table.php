@@ -15,8 +15,10 @@ class CreateDetailPPIPeopleTable extends Migration {
 		Schema::create('detail_p_p_i_people', function(Blueprint $table)
 		{
 			$table->bigincrements('id');
-			$table->dateTime('EndowmentDate_PPIP');
-			$table->text('EndowmentDescription_PPIP');
+			$table->dateTime('EndowmentDatePersonPersonalPI');
+			$table->text('EndowmentDescriptionPersonPersonalPI');
+			$table->string('RolPerson');
+			$table->bigInteger('QuantityPersonalPI');
 			$table->bigInteger('idPerson')->unsigned();
 			$table->bigInteger('idPersonalPI')->unsigned();
 			$table->timestamps();

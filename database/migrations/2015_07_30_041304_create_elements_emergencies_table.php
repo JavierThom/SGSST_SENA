@@ -15,10 +15,10 @@ class CreateElementsEmergenciesTable extends Migration {
 		Schema::create('elements_emergencies', function(Blueprint $table)
 		{
 			$table->bigincrements('id');
-			$table->string('Type_EE', 50);
-			$table->string('Name_EE', 50);
-			$table->bigInteger('Stock_EE');
-			$table->bigInteger('StockMin_EE');
+			$table->string('TypeEE', 50);
+			$table->string('NameEE', 50);
+			$table->bigInteger('StockEE');
+			$table->bigInteger('StockMinEE');
 			$table->timestamps();
 		});
 	}

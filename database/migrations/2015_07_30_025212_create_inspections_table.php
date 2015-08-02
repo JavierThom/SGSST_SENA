@@ -15,13 +15,13 @@ class CreateInspectionsTable extends Migration {
 		Schema::create('inspections', function(Blueprint $table)
 		{
 			$table->bigincrements('id');
-			$table->string('Type_Ins', 10);
-			$table->dateTime('Date_Ins');
-			$table->float('FirstIndicator_Ins');
-			$table->float('SecondIndicator_Ins');
-			$table->dateTime('Deadline_Ins');
-			$table->binary('File_Ins');
-			$table->string('FileName_Ins', 30);
+			$table->string('TypeIns', 10);
+			$table->dateTime('DateIns');
+			$table->float('FirstIndicatorIns');
+			$table->float('SecondIndicatorIns');
+			$table->dateTime('DeadlineIns');
+			$table->binary('FileIns');
+			$table->string('FileNameIns', 30);
 			$table->bigInteger('idPerson')->unsigned();
 			$table->rememberToken();
 			$table->timestamps();

@@ -44,7 +44,7 @@ class AlterAllTables extends Migration {
 				->on('people');
 		});
 		/*
-		 * Detail= Person-Inspection "Request_elements"
+		 * Detail= Person-Inspection
 		*/
 		Schema::table('request_elements', function($table)
 		{
@@ -96,13 +96,13 @@ class AlterAllTables extends Migration {
 				->on('personal_protection_items');
 		});
 		/*
-		 * Detail = COPASST-Person
+		 * Detail = Roles-Person
 		*/
-		Schema::table('detail_person_copassts', function($table)
+		Schema::table('detail_person_roles', function($table)
 		{
-			$table->foreign('idCopasst')
+			$table->foreign('idRole')
 				->references('id')
-				->on('copassts');
+				->on('Roles');
 
 			$table->foreign('idPerson')
 				->references('id')
@@ -282,6 +282,50 @@ class AlterAllTables extends Migration {
 			$table->foreign('idEvent')
 				->references('id')
 				->on('events');
+		});
+
+		Schema::table('detail_exams_novelties', function($table)
+		{
+			$table->foreign('idExam')
+				->references('id')
+				->on('exams');
+
+			$table->foreign('idNovelty')
+				->references('id')
+				->on('novelties');
+		});
+
+		Schema::table('detail_novelty_tracings', function($table)
+		{
+			$table->foreign('idNovelty')
+				->references('id')
+				->on('novelties');
+
+			$table->foreign('idTracing')
+				->references('id')
+				->on('tracings');
+		});
+
+		Schema::table('detail_incident_tracings', function($table)
+		{
+			$table->foreign('idTracing')
+				->references('id')
+				->on('tracings');
+
+			$table->foreign('idIncident')
+				->references('id')
+				->on('incidents');
+		});
+
+		Schema::table('detail_relocation_tracings', function($table)
+		{
+			$table->foreign('idTracing')
+				->references('id')
+				->on('tracings');
+
+			$table->foreign('idDetailHQPerson')
+				->references('id')
+				->on('detail_h_q_people');
 		});
 	}
 

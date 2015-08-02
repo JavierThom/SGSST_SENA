@@ -15,7 +15,7 @@ class CreateDetailPositionOccupationalRisksTable extends Migration {
 		Schema::create('detail_position_occupational_risks', function(Blueprint $table)
 		{
 			$table->bigincrements('id');
-			$table->char('LevelRisk_POR');
+			$table->char('LevelRiskPOR');
 			$table->bigInteger('idOccupationalRisk')->unsigned();
 			$table->bigInteger('idPosition')->unsigned();
 			$table->timestamps();

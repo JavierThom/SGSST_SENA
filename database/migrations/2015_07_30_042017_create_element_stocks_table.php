@@ -15,7 +15,7 @@ class CreateElementStocksTable extends Migration {
 		Schema::create('element_stocks', function(Blueprint $table)
 		{
 			$table->bigincrements('id');
-			$table->bigInteger('Quantity_ES');
+			$table->bigInteger('QuantityES');
 			$table->bigInteger('idElement')->unsigned();
 			$table->bigInteger('idAreaHQ')->unsigned();
 			$table->timestamps();

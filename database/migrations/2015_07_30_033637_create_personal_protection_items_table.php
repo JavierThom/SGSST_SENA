@@ -15,8 +15,8 @@ class CreatePersonalProtectionItemsTable extends Migration {
 		Schema::create('personal_protection_items', function(Blueprint $table)
 		{
 			$table->bigincrements('id');
-			$table->string('Name_PPI', 50);
-			$table->text('Description_PPI');
+			$table->string('NamePPI', 50);
+			$table->text('DescriptionPPI');
 			$table->timestamps();
 		});
 	}

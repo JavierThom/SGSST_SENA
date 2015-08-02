@@ -15,7 +15,7 @@ class CreateDetailTracingPeopleTable extends Migration {
 		Schema::create('detail_tracing_people', function(Blueprint $table)
 		{
 			$table->bigincrements('id');
-			$table->string('PersonRole_TP');
+			$table->string('PersonRoleTP');
 			$table->bigInteger('idTracing')->unsigned();
 			$table->bigInteger('idPerson')->unsigned();
 			$table->timestamps();

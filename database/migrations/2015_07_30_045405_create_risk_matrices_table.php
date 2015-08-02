@@ -15,8 +15,8 @@ class CreateRiskMatricesTable extends Migration {
 		Schema::create('risk_matrices', function(Blueprint $table)
 		{
 			$table->bigincrements('id');
-			$table->dateTime('DateModification_RM', 50);
-			$table->char('Calification_RM');
+			$table->dateTime('DateModificationRM', 50);
+			$table->char('CalificationRM');
 			$table->timestamps();
 		});
 	}

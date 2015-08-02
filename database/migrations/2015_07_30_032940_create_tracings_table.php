@@ -15,11 +15,11 @@ class CreateTracingsTable extends Migration {
 		Schema::create('tracings', function(Blueprint $table)
 		{
 			$table->bigincrements('id');
-			$table->string('Type_Tra',50);
-			$table->dateTime('Date_Tra');
-			$table->text('Description_Tra');
-			$table->char('Gravity_Tra');
-			$table->dateTime('DateControl_Tra');
+			$table->string('TypeTra',50);
+			$table->dateTime('DateTra');
+			$table->text('DescriptionTra');
+			$table->char('GravityTra');
+			$table->dateTime('DateControlTra');
 			$table->timestamps();
 		});
 	}

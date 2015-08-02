@@ -15,9 +15,9 @@ class CreateVerificationsTable extends Migration {
 		Schema::create('verifications', function(Blueprint $table)
 		{
 			$table->bigincrements('id');
-			$table->dateTime('Date_VR');
-			$table->boolean('ImplementedAction_VR');
-			$table->boolean('EffectiveControl_VR');
+			$table->dateTime('DateVR');
+			$table->boolean('ImplementedActionVR');
+			$table->boolean('EffectiveControlVR');
 			$table->bigInteger('idWeakRisk')->unsigned();
 			$table->timestamps();
 		});

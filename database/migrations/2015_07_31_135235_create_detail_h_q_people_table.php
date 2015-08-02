@@ -15,8 +15,9 @@ class CreateDetailHQPeopleTable extends Migration {
 		Schema::create('detail_h_q_people', function(Blueprint $table)
 		{
 			$table->bigincrements('id');
-			$table->string('RelocationType_HQP', 100);
-			$table->text('RelocationDescription_HQP');
+			$table->string('RelocationTypeHQP', 100);
+			$table->text('RelocationDescriptionHQP');
+			$table->char('StateHQ');
 			$table->bigInteger('idHQ')->unsigned();
 			$table->bigInteger('idPerson')->unsigned();
 			$table->timestamps();

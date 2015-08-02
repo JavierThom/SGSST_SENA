@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDetailPersonCopasstsTable extends Migration {
+class CreateOccupationalRisksTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,13 +12,10 @@ class CreateDetailPersonCopasstsTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('detail_person_copassts', function(Blueprint $table)
+		Schema::create('occupational_risks', function(Blueprint $table)
 		{
 			$table->bigincrements('id');
-			$table->bigInteger('Level_PC');
-			$table->date('AdmissionDate_PC');
-			$table->bigInteger('idCopasst')->unsigned();
-			$table->bigInteger('idPerson')->unsigned();
+			$table->string('NameOR', 40);
 			$table->timestamps();
 		});
 	}
@@ -30,7 +27,7 @@ class CreateDetailPersonCopasstsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('detail_person_copassts');
+		Schema::drop('occupational_risks');
 	}
 
 }

@@ -15,9 +15,14 @@ class CreateTimetablesTable extends Migration {
 		Schema::create('timetables', function(Blueprint $table)
 		{
 			$table->bigincrements('id');
-			$table->dateTime('Date_Timetable');
-			$table->dateTime('Date_Event');
-			$table->text('Description_TT');
+			$table->dateTime('DatePrograming');
+			$table->dateTime('DateActivity');
+			$table->char('DescriptionActivity');
+			$table->string('NameActivity');
+			$table->string('ThemeActivity');
+			$table->text('ObjectiveActivity');
+			$table->text('DevelopmentActivity');
+			$table->char('StateActivity');
 			$table->bigInteger('idHQ')->unsigned();
 			$table->bigInteger('idPerson')->unsigned();
 			$table->timestamps();

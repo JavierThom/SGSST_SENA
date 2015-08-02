@@ -15,11 +15,11 @@ class CreateRequestElementsTable extends Migration {
 		Schema::create('request_elements', function(Blueprint $table)
 		{
 			$table->bigincrements('id');
-			$table->dateTime('Date_RE');
-			$table->text('Description-RE');
-			$table->dateTime('Deadline_RE');
-			$table->bigInteger('Quantity_RE');
-			$table->char('State_RE');
+			$table->dateTime('DateRE');
+			$table->text('DescriptionRE');
+			$table->dateTime('DeadlineRE');
+			$table->bigInteger('QuantityRE');
+			$table->char('StateRE');
 			$table->bigInteger('idInspection')->unsigned();
 			$table->bigInteger('idElement')->unsigned();
 			$table->timestamps();

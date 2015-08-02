@@ -15,9 +15,9 @@ class CreateDetailAreaElementsEmergenciesTable extends Migration {
 		Schema::create('detail_area_elements_emergencies', function(Blueprint $table)
 		{
 			$table->bigincrements('id');
-			$table->text('Description_AEE');
-			$table->date('ExpirationDate_AEE');
-			$table->char('State_AEE');
+			$table->text('DescriptionAEE');
+			$table->date('ExpirationDateAEE');
+			$table->char('StateAEE');
 			$table->bigInteger('idElement')->unsigned();
 			$table->bigInteger('idHQ')->unsigned();
 			$table->timestamps();
