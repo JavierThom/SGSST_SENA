@@ -14,7 +14,7 @@ class CreateDetailExamsNoveltiesTable extends Migration {
 	{
 		Schema::create('detail_exams_novelties', function(Blueprint $table)
 		{
-			$table->increments('id');
+			$table->bigincrements('id');
 			$table->mediumText('TypeMitigate');
 			$table->text('DescriptionResult');
 			$table->bigInteger('idExam')->unsigned();

@@ -14,11 +14,11 @@ class CreateDetailIncidentTracingsTable extends Migration {
 	{
 		Schema::create('detail_incident_tracings', function(Blueprint $table)
 		{
-			$table->increments('id');
+			$table->bigincrements('id');
 			$table->char('GravityTracing');
 			$table->text('ConclusionTracing');
-			$table->bigInteger('idTracing');
-			$table->bigInteger('idIncident');
+			$table->bigInteger('idTracing')->unsigned();
+			$table->bigInteger('idIncident')->unsigned();
 			$table->timestamps();
 		});
 	}

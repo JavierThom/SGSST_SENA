@@ -14,9 +14,9 @@ class CreateDetailRelocationTracingsTable extends Migration {
 	{
 		Schema::create('detail_relocation_tracings', function(Blueprint $table)
 		{
-			$table->increments('id');
-			$table->bigInteger('idTracing');
-			$table->bigInteger('idDetailHQPerson');
+			$table->bigincrements('id');
+			$table->bigInteger('idTracing')->unsigned();
+			$table->bigInteger('idDetailHQPerson')->unsigned();
 			$table->timestamps();
 		});
 	}

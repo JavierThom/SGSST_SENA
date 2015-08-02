@@ -14,7 +14,7 @@ class CreateNoveltiesTable extends Migration {
 	{
 		Schema::create('novelties', function(Blueprint $table)
 		{
-			$table->increments('id');
+			$table->bigincrements('id');
 			$table->string('NameNov');
 			$table->text('DescriptionNov');
 			$table->char('GravityNov');

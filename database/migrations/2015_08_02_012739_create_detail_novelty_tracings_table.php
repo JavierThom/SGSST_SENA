@@ -14,7 +14,7 @@ class CreateDetailNoveltyTracingsTable extends Migration {
 	{
 		Schema::create('detail_novelty_tracings', function(Blueprint $table)
 		{
-			$table->increments('id');
+			$table->bigincrements('id');
 			$table->char('GravityNT');
 			$table->text('ConclusionsNT');
 			$table->bigInteger('idNovelty')->unsigned();

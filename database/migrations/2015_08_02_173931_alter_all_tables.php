@@ -284,17 +284,6 @@ class AlterAllTables extends Migration {
 				->on('events');
 		});
 
-		Schema::table('detail_exams_novelties', function($table)
-		{
-			$table->foreign('idExam')
-				->references('id')
-				->on('exams');
-
-			$table->foreign('idNovelty')
-				->references('id')
-				->on('novelties');
-		});
-
 		Schema::table('detail_novelty_tracings', function($table)
 		{
 			$table->foreign('idNovelty')
@@ -326,6 +315,17 @@ class AlterAllTables extends Migration {
 			$table->foreign('idDetailHQPerson')
 				->references('id')
 				->on('detail_h_q_people');
+		});
+
+		Schema::table('detail_exams_novelties', function($table)
+		{
+			$table->foreign('idExam')
+				->references('id')
+				->on('exams');
+
+			$table->foreign('idNovelty')
+				->references('id')
+				->on('novelties');
 		});
 	}
 
